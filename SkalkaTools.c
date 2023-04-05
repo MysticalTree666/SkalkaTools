@@ -19,9 +19,13 @@ int get_from_to(int min, int max) {
 }
 
 int compare_str(const char *str1, const char *str2) {
-    while (*str1++ == *str2++ && *str1);
+    while (*str1 || *str2) {
+        if (*str1 != *str2)
+            return 0;
+        str1++, str2++;
+    }
 
-    return (*(--str1) == *(--str2));
+    return 1;
 }
 
 void array_rng(int *array, int size, int range) {
